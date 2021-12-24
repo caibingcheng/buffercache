@@ -12,6 +12,7 @@ setup(name="buffercache",
       description="a tool for data caching",
       tests_require=["pytest", "pytest-cov"],
       long_description=long_description,
+      long_description_content_type="text/markdown",
       license="MIT",
       python_requires=">=3.0",
       )

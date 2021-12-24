@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['pypy-3.6', 'pypy-3.7', 'pypy-3.8']
+        python-version: ['3.6', '3.7', '3.8']
     steps:
       - name: Checkout Source
         uses: actions/checkout@v2
@@ -25,9 +25,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
-            ${{ runner.os }}-pip-
+            ${{ runner.os }}-pip-${{ matrix.python-version }}
 
       - name: Install Dependencies
         run: |
@@ -42,6 +42,9 @@ jobs:
     needs: test
     if: ${{ github.event_name == 'release' }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.6']
     steps:
       - name: Checkout Source
         uses: actions/checkout@v2
@@ -49,15 +52,16 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.6'
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
 
       - name: Cache pip
         uses: actions/cache@v2
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
-            ${{ runner.os }}-pip-
+            ${{ runner.os }}-pip-${{ matrix.python-version }}
 
       - name: Install Dependencies
         run: |

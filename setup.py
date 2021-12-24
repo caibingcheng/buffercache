@@ -14,5 +14,6 @@ setup(name="buffercache",
       long_description=long_description,
       long_description_content_type="text/markdown",
       license="MIT",
+      py_modules=['buffercache'],
       python_requires=">=3.0",
       )

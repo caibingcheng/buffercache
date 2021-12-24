@@ -1,0 +1,5 @@
+include LICENSE
+include README.md
+include datacache.py
+
+prune test_datacache.py

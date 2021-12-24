@@ -1,15 +1,15 @@
-![GitHub](https://img.shields.io/github/license/caibingcheng/datacache)
-![GitHub branch checks state](https://img.shields.io/github/checks-status/caibingcheng/datacache/master)
-![GitHub Release Date](https://img.shields.io/github/release-date/caibingcheng/datacache)
+![GitHub](https://img.shields.io/github/license/caibingcheng/buffercache)
+![GitHub branch checks state](https://img.shields.io/github/checks-status/caibingcheng/buffercache/master)
+![GitHub Release Date](https://img.shields.io/github/release-date/caibingcheng/buffercache)
 
-datacache is a python3 library. It provides utility methods for data caching.
+buffercache is a python3 library. It provides utility methods for data caching.
 
-datacache supports Python 3.0+ only. It is contained in only one Python file, so it can be easily copied into your project. (The copyright and license notice must be retained.)
+buffercache supports Python 3.0+ only. It is contained in only one Python file, so it can be easily copied into your project. (The copyright and license notice must be retained.)
 
 example:
 
 ```python
-from datacache import DataCache as DC
+from buffercache import BufferCache as DC
 
 set_data = ((1, 2, 3), None, "", "123", (), [], {})
 
@@ -22,4 +22,4 @@ for data in set_data:
     print(dc.get())
 ```
 
-Bugs can be reported to [https://github.com/caibingcheng/datacache](https://github.com/caibingcheng/datacache). The code can also be found there.
+Bugs can be reported to [https://github.com/caibingcheng/buffercache](https://github.com/caibingcheng/buffercache). The code can also be found there.

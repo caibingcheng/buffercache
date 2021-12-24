@@ -2,7 +2,7 @@ __version__ = '1.0.0'
 import time
 
 
-class DataCache():
+class BufferCache():
     def __init__(self, timeout=None):
         self._timeout = timeout
         self._timestamp = None

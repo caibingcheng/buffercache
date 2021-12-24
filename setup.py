@@ -1,14 +1,14 @@
 from setuptools import setup
-import datacache
+import buffercache
 
 with open("README.md", "r") as fp:
     long_description = fp.read()
 
-setup(name="datacache",
-      version=datacache.__version__,
+setup(name="buffercache",
+      version=buffercache.__version__,
       author="bbing",
       author_email="jack_cbc@163.com",
-      url="https://github.com/caibingcheng/datacache",
+      url="https://github.com/caibingcheng/buffercache",
       description="a tool for data caching",
       tests_require=["pytest", "pytest-cov"],
       long_description=long_description,

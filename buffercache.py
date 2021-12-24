@@ -63,3 +63,13 @@ class BufferCache():
     def set_getter(self, getter):
         self._getter = getter
         return self
+
+    def __str__(self):
+        return "{}".format(self._data)
+
+    def __repr__(self):
+        return "buffercache.BufferCache({}, {}, {}, {})".format(
+            self._data,
+            self._timeout,
+            self._timestamp,
+            self._getter.__name__ if self._getter else None)

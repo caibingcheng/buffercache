@@ -9,17 +9,17 @@ buffercache supports Python 3.0+ only. It is contained in only one Python file, 
 example:
 
 ```python
-from buffercache import BufferCache as DC
+from buffercache import BufferCache as BC
 
 set_data = ((1, 2, 3), None, "", "123", (), [], {})
 
 def get(data, args):
     return data, args
 
-dc = DC(timeout=0).set_getter(get)
+bc = BC(timeout=0).set_getter(get)
 for data in set_data:
-    dc.update(data, {'key': data})
-    print(dc.get())
+    bc.update(data, {'key': data})
+    print(bc.get())
 ```
 
 Bugs can be reported to [https://github.com/caibingcheng/buffercache](https://github.com/caibingcheng/buffercache). The code can also be found there.

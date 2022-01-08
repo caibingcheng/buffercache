@@ -103,6 +103,22 @@ class TestAPP(unittest.TestCase):
             self.assertEqual(str(bc), str(get(data, {'key': data})))
             time.sleep((timeout + 5) / 1000)
 
+    def test_set_data_bygetter_withtimeoutfast_immediate(self):
+        def get(data, args):
+            return data, True, args, True
+        from buffercache import BufferCache as BC
+        import time
+        set_data = self.data
+        timeout = 500
+        bc = BC(timeout=timeout).set_getter(get)
+        for data in set_data:
+            bc.immediate(data, {'key': data})
+            self.assertEqual(bc.get(), get(data, {'key': data}))
+            self.assertEqual(bc.data, get(data, {'key': data}))
+            self.assertEqual(bc.get_getter(), get)
+            self.assertEqual(bc.getter, get)
+            self.assertEqual(str(bc), str(get(data, {'key': data})))
+
     def test_set_data_bygetter_withtimeoutfast(self):
         def get(data, args):
             return data, args, True
@@ -118,6 +134,7 @@ class TestAPP(unittest.TestCase):
             self.assertEqual(bc.getter, get)
             self.assertEqual(str(bc), str(
                 get(set_data[0], {'key': set_data[0]})))
+            print(repr(bc))
 
     def test_sample_readme(self):
         from buffercache import BufferCache as BC
@@ -136,3 +153,4 @@ class TestAPP(unittest.TestCase):
             self.assertEqual(bc.get_getter(), get)
             self.assertEqual(bc.getter, get)
             self.assertEqual(str(bc), str(get(data, {'key': data})))
+            print(repr(bc))

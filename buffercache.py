@@ -1,4 +1,4 @@
-__version__ = '1.0.1'
+__version__ = '1.0.2'
 import time
 
 
@@ -45,6 +45,11 @@ class BufferCache():
     def getter(self):
         return self._getter
 
+    def immediate(self, *args, **kwargs):
+        if self._getter:
+            self.set(self._getter(*args, **kwargs))
+        return self
+
     def update(self, *args, **kwargs):
         if self._getter and self._wait():
             self.set(self._getter(*args, **kwargs))
@@ -68,8 +73,8 @@ class BufferCache():
         return "{}".format(self._data)
 
     def __repr__(self):
-        return "buffercache.BufferCache({}, {}, {}, {})".format(
+        return "buffercache.BufferCache(data={}, getter={}, timeout={}, timestamp={})".format(
             self._data,
+            self._getter.__name__ if self._getter else None,
             self._timeout,
-            self._timestamp,
-            self._getter.__name__ if self._getter else None)
+            self._timestamp,)
